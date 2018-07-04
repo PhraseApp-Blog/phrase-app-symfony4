@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+        {% block javascripts %}{% endblock %}
+    </body>
+    <script>
+        window.PHRASEAPP_CONFIG = {
+            projectId: "PROJECT_ID"
+        };
+        (function() {
+            var phraseapp = document.createElement('script'); phraseapp.type = 'text/javascript'; phraseapp.async = true;
+            phraseapp.src = ['https://', 'phraseapp.com/assets/in-context-editor/2.0/app.js?', new Date().getTime()].join('');
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(phraseapp, s);
+        })();
+    </script>
+</html>

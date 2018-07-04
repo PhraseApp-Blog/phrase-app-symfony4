@@ -1,0 +1,6 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <p>{{ date|localizeddate('medium', 'none', locale) }}</p>
+    <p>{{ number|localizednumber }}</p>
+    <p>{{ price|localizedcurrency('EUR') }}</p>
+{% endblock %}
