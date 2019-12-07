@@ -1,0 +1,31 @@
+###############################################################################
+#                          Generated on phpdocker.io                          #
+###############################################################################
+version: "3.1"
+services:
+
+    webserver:
+      image: nginx:alpine
+      container_name: symfony-i18n-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./phpdocker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+          - "8000:80"
+
+    php-fpm:
+      build: phpdocker/php-fpm
+      container_name: symfony-i18n-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./phpdocker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+        
+    mysql:
+      image: mysql:5.7
+      container_name: mysql
+      ports:
+          - "3306:3306"
+      environment: 
+          - MYSQL_ROOT_PASSWORD=password
